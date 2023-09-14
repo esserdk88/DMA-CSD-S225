@@ -31,7 +31,9 @@ namespace TextUserInterface
                         nextState = State.TECHNOLOGY;
                         //Run Weather Bunny
                         Console.Clear();
-                        WeatherBunny.Program.Start();
+                        //WeatherBunny.Program.Start();
+                        WeatherBunny.Program WBprogram = new WeatherBunny.Program();
+                        WBprogram.StartAlt();
 
                         break;
 
