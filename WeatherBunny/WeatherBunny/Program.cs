@@ -11,33 +11,17 @@ namespace WeatherBunny
 {
     public class Program
     {
-        List<City> _cityList;
+        private List<City> _cityList;
 
         public Program()
         {
             _cityList = GetCityList();
         }
-        public static void Start()
-        {
-            Console.WriteLine("Hi, I will be your weatherbunny today");
-            var url = "https://www.timeanddate.no/vaer/?continent=europe&low=c";
-            var web = new HtmlWeb();
-            var dom = web.Load(url);
-            var cities = dom.DocumentNode.SelectNodes("//td");
-            Console.WriteLine("Hi, I will be your weatherbunny today");
-            for (int index = 0; index < cities.Count; index += 4)
-            {
-                string temperature = cities[index + 3].InnerText;
-                int posAmbersand = temperature.IndexOf('&');
-                Console.WriteLine(cities[index].InnerText + "   " + cities[index + 3].InnerText.Remove(posAmbersand, 6));
-            }
-            Console.ReadLine();
-
-        }
 
         public void StartAlt()
         {
-            foreach(City city in _cityList)
+            Console.WriteLine("Hi, I will be your weatherbunny today");
+            foreach (City city in _cityList)
             {
                 Console.WriteLine(city.ToString(16));
             }
@@ -46,13 +30,11 @@ namespace WeatherBunny
 
         private List<City> GetCityList()
         {
-            var cityList = new List<City>();
+            List<City> cityList = new List<City>();
 
-            Console.WriteLine("Hi, I will be your weatherbunny today");
-            var url = "https://www.timeanddate.no/vaer/?continent=europe&low=c";
-            var web = new HtmlWeb();
-            var dom = web.Load(url);
-            var cities = dom.DocumentNode.SelectNodes("//td");
+            
+            string url = "https://www.timeanddate.no/vaer/?continent=europe&low=c";
+            HtmlNodeCollection cities = GetHtmlNodes(url, "//td");
             for (int index = 0; index < cities.Count; index += 4)
             {
                 string temperature = cities[index + 3].InnerText;
@@ -62,6 +44,14 @@ namespace WeatherBunny
 
             return cityList;
 
+        }
+
+        private HtmlNodeCollection GetHtmlNodes(string url,string xpath)
+        {
+            var web = new HtmlWeb();
+            var dom = web.Load(url);
+            var nodes = dom.DocumentNode.SelectNodes(xpath);
+            return nodes;
         }
 
         private string StringCleaner(string text)

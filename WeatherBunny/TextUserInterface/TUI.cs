@@ -9,6 +9,7 @@ namespace TextUserInterface
 {
     internal class TUI
     {
+        private static MenuDesigner _menuDesigner = new MenuDesigner();
         public static void Main(string[] args)
         {
             //Start of the TUI
@@ -53,17 +54,21 @@ namespace TextUserInterface
 
         private static State TechnologyMenu()
         {
-            Console.Clear();
+
+            List<string> menuItems = new List<string>()
+            {
+                //Menu items goes here
+                "Technology",
+                "Programming",
+                "Fun",
+                "Other"
+            };
+
             State outputState = State.MAINMENU;
-            Console.WriteLine("---------- Technology ----------");
-            Console.WriteLine("");
-            Console.WriteLine("(W) - WeatherBunny");
-            Console.WriteLine("");
-            Console.WriteLine("--------------------------------");
-            Console.WriteLine("(enter) - Main Menu");
-            Console.WriteLine("(0) - Exit");
-            Console.WriteLine("");
-            Console.Write("Choose: ");
+            //Menu will be printed here
+            Console.Clear();
+            _menuDesigner.TechnologyMenu();
+
             char key = Console.ReadKey().KeyChar;
 
             switch (key)
@@ -81,16 +86,19 @@ namespace TextUserInterface
 
         private static State MainMenu()
         {
-            Console.Clear();
+            List<string> menuItems = new List<string>()
+            {
+                //Menu items goes here
+                "Technology",
+                "Programming",
+                "Fun",
+                "Other"
+            };
             State outputState = State.MAINMENU;
-            Console.WriteLine("---------- Main Menu ----------");
-            Console.WriteLine("");
-            Console.WriteLine("(T) - Technology");
-            Console.WriteLine("");
-            Console.WriteLine("-------------------------------");
-            Console.WriteLine("(0) - Exit");
-            Console.WriteLine("");
-            Console.Write("Choose: ");
+            //Menu will be printed here
+            Console.Clear();
+            _menuDesigner.MainMenu(menuItems);
+
             char key = Console.ReadKey().KeyChar;
 
             switch (key)
