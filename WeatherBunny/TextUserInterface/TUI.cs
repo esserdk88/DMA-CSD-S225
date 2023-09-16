@@ -12,6 +12,7 @@ namespace TextUserInterface
         private static MenuDesigner _menuDesigner = new MenuDesigner();
         public static void Main(string[] args)
         {
+            WeatherBunny.Program WBprogram = new WeatherBunny.Program();
             //Start of the TUI
             State _currentState = State.MAINMENU;
 
@@ -33,8 +34,17 @@ namespace TextUserInterface
                         //Run Weather Bunny
                         Console.Clear();
                         //WeatherBunny.Program.Start();
-                        WeatherBunny.Program WBprogram = new WeatherBunny.Program();
+                        
                         WBprogram.StartAlt();
+
+                        break;
+
+                    case State.TEST:
+                        nextState = State.TECHNOLOGY;
+                        //Run Weather Bunny
+                        Console.Clear();
+                        //WeatherBunny.Program.Start();
+                        WBprogram.StartTest();
 
                         break;
 
@@ -61,7 +71,8 @@ namespace TextUserInterface
                 "Technology",
                 "Programming",
                 "Fun",
-                "Other"
+                "Other",
+                "Test"
             };
 
             State outputState = State.MAINMENU;
@@ -75,6 +86,9 @@ namespace TextUserInterface
             {
                 case 'w':
                     outputState = State.WEATHERBUNNY;
+                    break;
+                case 't':
+                    outputState = State.TEST;
                     break;
                 case '0':
                     outputState = State.EXIT;

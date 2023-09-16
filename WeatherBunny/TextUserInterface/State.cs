@@ -8,6 +8,6 @@ namespace TextUserInterface
 {
     internal enum State
     {
-        MAINMENU, EXIT, TECHNOLOGY, WEATHERBUNNY
+        MAINMENU, EXIT, TECHNOLOGY, WEATHERBUNNY, TEST
     }
 }
