@@ -8,6 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\source\repos\ConsoleCards\ConsoleCards\ConsoleCards.csproj" />
+    <ProjectReference Include="..\..\..\..\..\source\repos\ConsoleLotto\ConsoleLotto\ConsoleLotto.csproj" />
     <ProjectReference Include="..\WeatherBunny\WeatherBunny.csproj" />
   </ItemGroup>
 
